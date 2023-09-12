@@ -90,10 +90,44 @@ frutas += ['banana']
 frutas.remove('naranja')
 print(frutas)
 
+#4.
+persona = ['Lucas','Márquez',38787487,1994,'Ciudad de Buenos Aires',0]
+print(persona)
 
+#5.
+clave_personal = persona[2]*persona[3]
+persona[5] = clave_personal
+print(clave_personal)
+print(persona)
+
+#6.
+receta = ['1.En el amasado hay que unir la harina y la sal con el agua con levadura disuelta.','3.Pre-hornear la masa para pizza','4.Es mejor usar tomate fresco','2.Hay que agregar el aceite de a poco']
+receta.sort()
+print(receta)
+receta.sort(reverse=True)
+print(receta)
 
 #6) Tuplas
 #1.
+tupla1 = (1,2,3)
+tupla2 = (4,5,6)
+suma = [0,0,0]
+producto = [0,0,0]
+suma[0] = tupla1[0]+tupla2[0]
+suma[1] = tupla1[1]+tupla2[1]
+suma[2] = tupla1[2]+tupla2[2]
+producto[0] = tupla1[0]*tupla2[0]
+producto[1] = tupla1[1]*tupla2[1]
+producto[2] = tupla1[2]*tupla2[2]
+tupla3 = (suma,producto)
+print(tupla3)
+
+#2.
+pgp_casera = (clave_personal,'LuCaS1511-')
+
+#3.
+#no se van a poder modificar porque las tuplas son inmutables
+
 valoresFijos = (0.25,0.5,0.75)
 
 valoresVariables = [100,100,100]
@@ -105,3 +139,19 @@ valoresVariables[2] = valoresVariables[2] * valoresFijos[2]
 print(valoresVariables)
 
 #7) Diccionarios
+#1.
+ingredientes = {'tomate':5,'cebolla':1,'ajo':2,'morron':1,'zanahoria':1,'puerro':2,'papa':3,'lentejas':'400gr','ternera':'400gr','salame':1}
+
+#2.
+print(persona)
+
+
+usuario = {'nombre':persona[0],'apellido':persona[1],'DNI':[2],'anio_de_nacimiento':persona[3],'lugar_de_nacimiento':persona[4],'clave':persona[5]}
+print(usuario)
+
+#me confundi en el elemento 2 que seria la clave DNI asi que tuve que modificarlo
+usuario['DNI']=38787487
+print(usuario)
+
+#3.
+usuario['pgp_casera']=tupla3
