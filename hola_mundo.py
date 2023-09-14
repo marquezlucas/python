@@ -155,3 +155,55 @@ print(usuario)
 
 #3.
 usuario['pgp_casera']=tupla3
+
+
+#punto 5 autoevaluacion 1
+
+mi_lista = [1,2,'3',0]
+
+def muchas_excepciones(lista):
+    for elemento in mi_lista:
+        try:
+            if elemento == 0:
+                resultado = 10/elemento
+            elif elemento == 2:
+                resultado = 10/elem
+            else:
+                resultado = 10 / elemento
+            print(f'Resultado: {resultado}')
+        except ZeroDivisionError:
+            return elemento
+        except TypeError:
+            return resultado
+        except NameError:
+            return elemento
+        except Exception as e:
+            return resultado
+    return elemento
+muchas_excepciones(mi_lista)
+
+#punto 7 autoevaluacion 1
+
+def funcion10(tope):
+    for i in range(1,tope):
+        valor = {'indice':i,'multi':i**i-1}
+
+        if valor['indice']>3:
+            return valor['multi']
+        
+        if valor['multi']>1:
+            return valor['multi']
+        
+        return valor['multi']
+funcion10(9)
+
+#punto 9 autoevaluacion 1
+
+def suma(*args):
+    resultado = '0'
+    for num in args:
+        resultado += str(num)
+    return resultado
+
+resultado_final = suma(2,4,6,8)
+print(resultado_final)
