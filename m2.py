@@ -109,3 +109,78 @@ resultado, resto = dividir(dividendo, divisor)
 
 # Mostramos los valores en pantalla
 print(f'Resultado de la división: {resultado} y el resto es: {resto}.')
+
+#Practica
+#1. Operadores y expresiones
+#1)
+#a
+1+1
+#b
+print(1.1 - 1.2)
+#c
+2*2
+#d
+6/3
+
+#2)
+cadena1 = 'asd'
+
+cadena2 = 'qwe'
+
+cadena3 = cadena1 + cadena2
+print(cadena3)
+
+#3)
+longitudRectangulo = 6
+anchoRectangulo = 3
+areaRectangulo = longitudRectangulo * anchoRectangulo
+print(areaRectangulo)
+
+#4)
+def interes(principal,tasa,tiempo):
+    resultadoInteres = principal * tasa * tiempo
+    return resultadoInteres
+
+principal = float(input('Ingrese el principal: '))
+tasa = float(input('Ingrese la tasa: '))
+tiempo = float(input('Ingrese el tiempo: '))
+
+resultadoInteres = interes(principal,tasa,tiempo)
+
+print(f'El interes es de: {resultadoInteres}.')
+
+### modificado
+def calcular_interes(principal, tasa, tiempo):
+    """
+    Calcula el interés simple.
+
+    Args:
+        principal (float): El monto principal.
+        tasa (float): La tasa de interés (por ejemplo, 0.05 para el 5%).
+        tiempo (float): El tiempo en años.
+
+    Returns:
+        float: El interés calculado.
+
+    Raises:
+        ValueError: Si alguno de los valores es negativo.
+    """
+    if principal < 0 or tasa < 0 or tiempo < 0:
+        raise ValueError("Los valores deben ser positivos.")
+
+    interes = principal * tasa * tiempo
+    return round(interes, 2)
+
+try:
+    principal = float(input('Ingrese el principal: '))
+    tasa = float(input('Ingrese la tasa (por ejemplo, 0.05 para el 5%): '))
+    tiempo = float(input('Ingrese el tiempo en años: '))
+
+    resultado_interes = calcular_interes(principal, tasa, tiempo)
+
+    print(f'El interés es de: {resultado_interes}.')
+except ValueError as e:
+    print(f'Error: {e}')
+
+#5)
+
