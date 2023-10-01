@@ -122,7 +122,7 @@ print(1.1 - 1.2)
 #d
 6/3
 
-#2)
+#2)Concatenación de Cadenas
 cadena1 = 'asd'
 
 cadena2 = 'qwe'
@@ -130,24 +130,24 @@ cadena2 = 'qwe'
 cadena3 = cadena1 + cadena2
 print(cadena3)
 
-#3)
+#3)Cálculo de Área de un Rectángulo
 longitudRectangulo = 6
 anchoRectangulo = 3
 areaRectangulo = longitudRectangulo * anchoRectangulo
 print(areaRectangulo)
 
-#4)
+#4)Cálculo de Interés Simple
 def interes(principal,tasa,tiempo):
-    resultadoInteres = principal * tasa * tiempo
-    return resultadoInteres
+    resultado_interes = principal * tasa * tiempo
+    return resultado_interes
 
 principal = float(input('Ingrese el principal: '))
 tasa = float(input('Ingrese la tasa: '))
 tiempo = float(input('Ingrese el tiempo: '))
 
-resultadoInteres = interes(principal,tasa,tiempo)
+resultado_interes = interes(principal,tasa,tiempo)
 
-print(f'El interes es de: {resultadoInteres}.')
+print(f'El interes es de: {resultado_interes}.')
 
 ### modificado
 def calcular_interes(principal, tasa, tiempo):
@@ -182,5 +182,190 @@ try:
 except ValueError as e:
     print(f'Error: {e}')
 
+#5)  Cálculo de Edad en Años Bisiestos
+def edad_bisiestos(edad): 
+    try:
+        edad_bisiesta = edad // 4
+        return edad_bisiesta
+    except ZeroDivisionError:
+        raise ValueError("La cantidad de años bisiestos no puede ser igual a cero")
+try:   
+    edad = int(input('Ingrese su edad: '))
+    #anios_bisiestos = int(input('Ingrese la cantidad de años bisiestos: '))
+
+    edad_bisiesta = edad_bisiestos(edad)
+    print(f'{edad_bisiesta}')
+except ValueError as e:
+    print(f'Error: {e}')
+
+
+#2. Controladores de flujo
+#1)
+#hecho por mi
+numeros = [1,2,3,4,5,6]
+def numeros_pares(numeros):
+    pares = []
+    for i in numeros:
+        if i %2 == 0:
+            pares.append(i)  
+    return pares
+
+pares = numeros_pares(numeros)
+print(pares)
+#echo por gpt
+"""
+def solicitar_numeros(mensaje):
+    while True:
+        try:
+            numeros = int(input(mensaje))
+            return numeros
+        except ValueError:
+            print("Por favor, ingresa un número valido")
+
+def numeros_pares(numeros):
+    pares = []
+    for i in numeros:
+        if i %2 == 0:
+            pares.append(i)  
+    return pares
+
+cantidad_numeros = solicitar_numeros("cuantos números va a ingresar?")
+numeros = []
+
+for i in range(cantidad_numeros):
+    numero = solicitar_numeros("Ingrese un número: ")
+    numeros.append(numero)
+
+pares = numeros_pares(numeros)
+print(f'Los numeros {pares} son pares')
+"""
+#2)
+
+edades = {
+    "Lucas": 28,
+    "Camila": 29,
+    "Agustin": 27
+}
+
+for nombre, edad in edades.items():         #itera a través del diccionario edades utilizando el método .items(), 
+    print(f'{nombre} tiene {edad} años')    #que nos permite acceder tanto a la clave (nombre) como al valor (edad) en cada iteración. 
+    
+#3)
+
+numeros = [1,2,3,4,5,6]
+
+suma = 0            
+
+for i in numeros:
+    if i %2 == 0:   # Si el numero es para True
+
+        suma += i   # Sumamos i a la variable suma
+
+print(suma)
+
+#4)
+
+palabras = ['hola','gato','pez']
+
+for i in palabras:
+    cantidad = len(i)
+
+    print(i,cantidad)
+
 #5)
 
+estudiantes = {
+    "Lucas": "A",
+    "Camila": "B",
+    "Agustin": "C"
+}
+
+for nombre, calificacion in estudiantes.items():
+    print(f'{nombre} se saco {calificacion} en el examen')
+
+#6)
+frase = "La ciencia nunca resuelve un problema sin crear otros 10 más."
+
+vocales = {
+    "a":2,
+    "e":1,
+    "i":4,
+    "0":0,
+    "u":1
+}
+
+suma_vocales = 0
+
+for i in frase:
+    if i.lower() in vocales:
+        suma_vocales += vocales[i.lower()]
+
+print(f'La suma total de los valores de las vocales es {suma_vocales}')
+
+
+#3.Entradas y Salidas de Datos
+
+#1)Calculadora Simple
+
+#Solicitamos al usuario que ingrese dos números
+numero1= float(input("Ingrese el primer número: "))
+numero2= float(input("Ingrese el segundo número: "))
+
+#Le pedimos al usuario que ingrese la operación matemática
+operacion = input("Ingrese la operacion matemática (+, -, *, /): ")
+
+#Se realiza la operación
+if operacion == "+":
+    calculo = numero1 + numero2
+elif operacion == "-":
+    calculo = numero1 - numero2
+elif operacion == "*":
+    calculo = numero1 * numero2
+elif operacion == "/":
+    if numero2 != 0:
+        calculo = numero1 / numero2
+    else:
+        calculo = "No es posible dividir por cero"
+else:
+    calculo = "No se puede realizar la operación"
+
+#Mostramos el resultado
+print(f'El resultado de la operación {operacion} entre {numero1} y {numero2} es: {calculo}')
+
+
+#2) Conversión de Temperatura
+
+#Se define funcion
+def celsius_fahrenheit (temperatura):
+    fahrenheit = (temperatura * 9/5)+32 #Se utiliza formula para pasar de grados Celsius a Fahrenheit
+    return fahrenheit
+
+#Se le pide al usuario una temperatura en grados Celsius
+temperatura = float(input("Ingrese una temperatura en Celsius: "))
+
+#Se utiliza función para pasar a Fahrenheit
+fahrenheit = celsius_fahrenheit(temperatura)
+
+print(f'La temperatura en fahrenheit es: {fahrenheit}')
+
+#3)Suma de Números en la Línea de Comandos
+
+import sys
+
+numero1 = int(sys.argv[1])
+numero2 = int(sys.argv[2])
+
+suma = numero1 + numero2
+
+print(f'La suma de {numero1} y {numero2} es {suma}')
+
+#4) Generador de Saludos Personalizados
+
+import sys
+
+nombre = str(sys.argv[1])
+print(f'Hola, {nombre}.¡Bienvenid@!')
+
+#4. Funciones
+
+#1) Función Simple de Suma
