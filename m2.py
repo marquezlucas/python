@@ -369,3 +369,46 @@ print(f'Hola, {nombre}.¡Bienvenid@!')
 #4. Funciones
 
 #1) Función Simple de Suma
+def suma(valor1, valor2):
+    resultado = valor1 + valor2
+
+    return resultado
+
+numero1 = float(input('Ingrese un numero: '))
+numero2 = float(input('Ingrese un numero: '))
+resultado = suma(numero1,numero2)
+
+print(f'El resultado de sumar {numero1} y {numero2} es {resultado}')
+
+#2) Función que Devuelve Varios Valores
+
+def dividir (valor1, valor2):
+    resultado = valor1 / valor2
+    residuo = valor1 % valor2
+    return resultado, residuo
+
+division = dividir(numero1,numero2)
+print(f'El resultado de la division es {division[0]} y el resto es {division[1]}')
+
+#3) Función con Argumentos Variables (*args)
+
+def promedio(*args):
+    suma = 0
+    for i in args:
+        suma += i
+    resultado = suma/len(args)
+    return suma, resultado
+    
+resultado1 = promedio(21,5,30,6,78)
+print(f"La suma es {resultado1[0]} y el promedio es {resultado1[1]}")
+
+#4)
+
+def informacion_persona(**kwargs):
+    print(kwargs)
+    for clave, valor in kwargs.items():
+        print(f'{clave}: {valor}')
+
+persona = informacion_persona(nombre='Pedro', edad=25, ciudad='Buenos Aires')
+
+print({persona})
