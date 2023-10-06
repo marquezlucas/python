@@ -449,7 +449,8 @@ estudiantes = {
     'Lucas':[8,6,4,10],
     'Agustin':[2,7,9,6],
     'Pedro':[8,3,5,9],
-    'Julieta':[7,8,9,4]
+    'Julieta':[7,8,9,4],
+    'Juan':[0,0,0,0]
 }
 
 def calcular_promedio(estudiantes):
@@ -469,7 +470,7 @@ print(resultados)
 
 #2) Función para Filtrar Números Pares
 
-numeros = [1,2,3,4,5,6,7,8,9,10]
+numeros = [1,2,3,4,5,6,7,8,9,10,'f']
 
 def filtrar_pares(numeros):
     pares=[]
@@ -479,8 +480,123 @@ def filtrar_pares(numeros):
                 pares.append(i) 
         except Exception as e:
                 print(f'Error: {e}')
-
+        except ValueError:
+                print(f'Error: {i} no es un numero')
     return pares
 
 numeros_pares_p2 = filtrar_pares(numeros)
 print(numeros_pares_p2) 
+
+#3) Función para Combinar Listas de Compras
+
+lista1 = ['qwe','asd','zxc']
+lista2 = ['iop','qwe','bnm']
+
+def combinar_listas(lista1, lista2):
+   
+    lista_combinada = list(lista1+lista2)
+    lista_diccionario = {}
+   
+    for i in lista_combinada:
+        cantidad_articulos = lista1.count(i) + lista2.count(i)
+        lista_diccionario[i] = cantidad_articulos
+   
+    return lista_diccionario
+
+
+print(combinar_listas(lista1,lista2)) 
+
+
+#######1
+frase = "Los string son cadenas de caracteres"
+contador = 0
+for letra in frase:
+    contador += 1
+
+print(contador)
+
+######2
+vocales = 'aeiou'
+letra = ''
+i= 0
+
+while letra != 'o':
+    letra = vocales[i]
+    print(letra)
+    i += 1
+
+#####3
+"""
+if 'a' == 'b':
+    print('A y B sin iguales')
+elif:
+    print('A y B son distintos')
+"""
+####5
+
+def funcion10(tope):
+    for i in range(1,tope):
+        valor = {'indice':i, 'multi':i**i-1}
+
+        if valor['indice'] > 3:
+            return valor['multi']
+        
+        if valor['multi'] > 1:
+            return valor['multi']
+        
+        return valor['multi']
+
+funcion10(9)
+
+####6
+
+def buscar_dni_nuevo(dnis):
+    for i in dnis:
+        if i > 50000000:
+            print('Hay un dni nuevo')
+            return i
+        return 999999999
+
+dnis = ['34598712','59384756','57876543']
+dni_nuevo = buscar_dni_nuevo(dnis)
+print(dni_nuevo)
+
+
+####7
+
+def suma(*args):
+    resultado ='0'
+    for num in args:
+        resultado += str(num)
+    return resultado
+
+resultado_final = suma(2, 4, 6, 8)
+print(resultado_final)
+
+####10
+
+mi_lista = [1,2,'3',0]
+
+def muchas_excepciones(mi_lista):
+    for elemento in mi_lista:
+        try:
+            if elemento ==0:
+                resultado = 10 / elemento
+            elif elemento == 2:
+                resultado = 10 / elemento
+            else:
+                resultado = 10 / elemento
+            
+            print(f'Resultado: {resultado}')
+        except ZeroDivisionError:
+            return elemento
+        except TypeError:
+            return resultado
+        except NameError:
+            return elemento
+        except Exception as e:
+            return e
+    
+    return elemento 
+
+muchas_excepciones(mi_lista)
