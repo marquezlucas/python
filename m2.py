@@ -257,7 +257,7 @@ numeros = [1,2,3,4,5,6]
 suma = 0            
 
 for i in numeros:
-    if i %2 == 0:   # Si el numero es para True
+    if i %2 == 0:   # Si el numero es par True
 
         suma += i   # Sumamos i a la variable suma
 
@@ -402,13 +402,85 @@ def promedio(*args):
 resultado1 = promedio(21,5,30,6,78)
 print(f"La suma es {resultado1[0]} y el promedio es {resultado1[1]}")
 
-#4)
+#4) Función con Argumentos de Palabras Clave (**kwargs)
 
 def informacion_persona(**kwargs):
     print(kwargs)
     for clave, valor in kwargs.items():
         print(f'{clave}: {valor}')
 
-persona = informacion_persona(nombre='Pedro', edad=25, ciudad='Buenos Aires')
+informacion_persona(nombre='Pedro', edad=25, ciudad='Buenos Aires')
 
-print({persona})
+
+#5) Función que Modifica una Variable Global
+
+contador = 0
+
+def aumentar_contador(contador):
+    return contador + 1
+#se puede utilizar una funcion "global"?
+contador = aumentar_contador(contador)
+print (contador)
+
+contador = aumentar_contador(contador)
+print (contador)
+
+contador = aumentar_contador(contador)
+print (contador)
+
+#6) Función que Utiliza Variables Locales y Globales
+#preguntar
+sufijo = 'able'
+
+def combinar_cadenas():
+    cadena = 'toma'
+    combinada = cadena + sufijo
+    return combinada
+
+
+palabra = combinar_cadenas()
+print(palabra)
+
+#5. Excepciones
+
+#1) Función para Calcular Promedio de Notas
+
+estudiantes = {
+    'Lucas':[8,6,4,10],
+    'Agustin':[2,7,9,6],
+    'Pedro':[8,3,5,9],
+    'Julieta':[7,8,9,4]
+}
+
+def calcular_promedio(estudiantes):
+    promedios = {}
+    for estudiante, notas in estudiantes.items():
+        try:
+            promedio = sum(notas) / len(notas)
+            promedios[estudiante] = promedio
+        except ZeroDivisionError:
+            promedios[estudiante] = 0
+        except Exception as e:
+            promedios[estudiante] = f'Error: {e}'
+    return promedios
+
+resultados = calcular_promedio(estudiantes)
+print(resultados)
+
+#2) Función para Filtrar Números Pares
+
+numeros = [1,2,3,4,5,6,7,8,9,10]
+
+def filtrar_pares(numeros):
+    pares=[]
+    for i in numeros:
+        try:
+            if i %2 == 0:
+                pares.append(i) 
+        except Exception as e:
+                print(f'Error: {e}')
+
+    return pares
+
+numeros_pares_p2 = filtrar_pares(numeros)
+print(numeros_pares_p2) 
