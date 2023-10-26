@@ -159,6 +159,7 @@ while True:
         print("Opción no válida. Por favor, ingrese a, b, c, d o e.")
 
 #2)Objetos - Clases anidadas 
+#2.1
 
 class Alumno:
     def __init__(self,nombre,apellido,edad,DNI,materias):
@@ -167,3 +168,34 @@ class Alumno:
         self.edad = int(edad)
         self.DNI = int(DNI)
         self.materias = materias
+
+#2.2 creo un metodo para tener el promedio anual
+
+    def obtener_promedio_anio(self, anio):
+        promedio_anual = [materia['nota'] for materia in self.materias['anio']== anio]
+        if promedio_anual:
+            return sum(promedio_anual) / len(promedio_anual)
+        else:
+            return 0
+        
+#creo un metodo para tener el promedio anual
+    def obtener_promedio_general (self):
+        notas = [materia['nota']for materia in self.materias]
+        if notas:
+            return sum(notas) / len(notas)
+        else:
+            return 0
+
+#creo metodo para tener la mejor materia
+    def mejor_materia(self):
+        if self.materias:
+            mejor_materia = max(self.materias, key = lambda materia: materia['nota'])
+            return mejor_materia['nombre']
+        else:
+            return 'No hay materias registradas'
+
+class Materias:
+    def __init__(self,nombre,anio,nota):
+        self.nombre = nombre
+        self.anio = anio
+        self.nota = nota
