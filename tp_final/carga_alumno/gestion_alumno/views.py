@@ -5,7 +5,7 @@ from django.core.serializers import serialize
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .models import Alumno, Curso
 
-# Create your views here.
+
 def cargar_alumnos(request):
     if request.method == 'POST' and request.FILES.get('csv_file'):
         csv_file = request.FILES['csv_file']
@@ -13,13 +13,13 @@ def cargar_alumnos(request):
             try:
                 decoded_file = csv_file.read().decode('utf-8')
                 csv_data = csv.reader(decoded_file.splitlines(), delimiter=',')
-                next(csv_data)  # Skip the header row if it exists
+                next(csv_data)  # si el csv tiene la primera fila de encabezados de columna la saltea
                 
                 # Lista para almacenar datos serializados de alumnos
                 serialized_alumnos = []
 
 
-                # Iterate through the CSV data and create or update Alumno objects
+                # itera los datos del csv y crea o actualiza los objetos de Alumno
                 for row in csv_data:
                     dni, nombre, apellido, telefono, correo_electronico, curso_id = row
                     
@@ -28,7 +28,7 @@ def cargar_alumnos(request):
                     if alumno_exists:
                         print(f'Alumno with DNI {dni} already exists. Skipping...')
                     else:
-                        # Create or update the Alumno object
+                        # crea o actualiza los objetos de Alumno
                         alumno, created = Alumno.objects.update_or_create(
                             dni=dni,
                             defaults={
@@ -53,7 +53,7 @@ def cargar_alumnos(request):
     else:
         return JsonResponse({'error': 'Debe proporcionar un archivo CSV para cargar.'}, status=400)
 
-def listar_alumno(request):
+def listar_alumnos(request):
     alumnos = Alumno.objects.all()
 
     # Serializa los datos de los alumnos utilizando la función serialize
