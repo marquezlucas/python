@@ -1,8 +1,12 @@
 import csv
 import json
-from django.http import JsonResponse, HttpResponseNotAllowed
+import logging
+from django.core.serializers import serialize
+from django.http import JsonResponse, HttpResponseNotAllowed, HttpResponse
 from django.shortcuts import get_object_or_404 #get_list_or_404
 from .models import Alumno, Curso
+
+logger = logging.getLogger(__name__)
 
 def cargar_alumnos(request):
     if request.method == 'POST' and request.FILES.get('csv_file'):
@@ -21,7 +25,6 @@ def cargar_alumnos(request):
                 for row in csv_data:
                     dni, nombre, apellido, telefono, correo_electronico, curso_id = row
                     
-                    alumno_exists = Alumno.objects.filter(dni=dni).exists()
 
                     # Crea o actualiza los objetos de Alumno
                     alumno, created = Alumno.objects.update_or_create(
